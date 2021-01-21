@@ -147,8 +147,7 @@ int main(int argc, char** argv){
             con_roi.wait(lck_r, []{return !not_roi;});
 
             cv::remap(img_zed_left, img_zed_left_remap, map11, map12, cv::INTER_LINEAR);
-            not_roi = true;
-            con_roi.notify_one();
+
 
             cv::remap(img_zed_right, img_zed_right_remap, map21, map22, cv::INTER_LINEAR);
 
@@ -157,6 +156,8 @@ int main(int argc, char** argv){
         // 图像匹配获得视差图
             get_disparity(std::ref(sgm), std::ref(img_zed_left_scale), std::ref(img_zed_right_scale), std::ref(disparity), disp_size, subpixel);
             disparity.convertTo(disparity_32f, CV_32F, subpixel ? 1. / sgm::StereoSGM::SUBPIXEL_SCALE : 1);
+            not_roi = true;
+            con_roi.notify_one();
 
             ts5 = getCurrentTime();
             std::cout << "total: " << (ts5-ts6) << "毫秒" << std::endl;
