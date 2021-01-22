@@ -69,7 +69,7 @@ namespace sgm {
 	*/
 	class StereoSGM {
 	public:
-		static const int SUBPIXEL_SHIFT = 5;
+		static const int SUBPIXEL_SHIFT = 8;
 		static const int SUBPIXEL_SCALE = (1 << SUBPIXEL_SHIFT);
 
 		/**

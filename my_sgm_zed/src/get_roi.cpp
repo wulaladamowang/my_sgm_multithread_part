@@ -19,7 +19,7 @@ int relativeDis(cv::Vec4f line_para, std::vector<cv::Point2f> point) {
     return index;
 };
 
-void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi) {
+void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi, std::vector<cv::Point>& roi_points) {
     static std::vector<int > pre_rect_roi = {0, 0, 1, 1};// 初始化用于记录上次检测到目标的位置
     static cv::Size mask_size = image.size();
     static const cv::Ptr<cv::aruco::Dictionary> c_dictionary = cv::aruco::getPredefinedDictionary(
@@ -165,6 +165,13 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         roi_position.push_back(roi_p1);
         roi_position.push_back(roi_p2);
         roi_position.push_back(roi_p3);
+        cv::Point tmp_point;
+        roi_points.clear();
+        for (int m = 0; m < 4; m++){
+            tmp_point.x = roi_position[m].x < 0 ? 0 : (roi_position[m].x > mask_size.width-1 ? mask_size.width-1 : roi_position[m].x);
+            tmp_point.y = roi_position[m].y < 0 ? 0 : (roi_position[m].y > mask_size.height-1 ? mask_size.height-1 : roi_position[m].y);
+            roi_points.push_back(tmp_point);
+        }
 
 
         min_x = roi_p0.x>0?roi_p0.x:0;

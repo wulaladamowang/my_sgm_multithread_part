@@ -9,6 +9,6 @@
 #include <opencv2/highgui.hpp>
 #include <iostream>
 int relativeDis(cv::Vec4f line_para, std::vector<cv::Point2f> point);
-void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi) ;
+void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi, std::vector<cv::Point>& roi_points) ;
 
 #endif
