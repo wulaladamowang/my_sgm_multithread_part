@@ -1,4 +1,4 @@
-The system is: Linux - 5.4.0-62-generic - x86_64
+The system is: Linux - 5.4.0-65-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
 Compiler: /usr/bin/cc 
 Build flags: 
@@ -28,28 +28,28 @@ The CXX compiler identification is GNU, found in "/home/wang/code/c++Code/my_sgm
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_97b84/fast"
-/usr/bin/make -f CMakeFiles/cmTC_97b84.dir/build.make CMakeFiles/cmTC_97b84.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_5d59a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5d59a.dir/build.make CMakeFiles/cmTC_5d59a.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_97b84.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_97b84.dir/testCCompiler.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_97b84
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97b84.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_97b84.dir/testCCompiler.c.o  -o cmTC_97b84 
+Building C object CMakeFiles/cmTC_5d59a.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_5d59a.dir/testCCompiler.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5d59a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5d59a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_5d59a.dir/testCCompiler.c.o  -o cmTC_5d59a 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_7385a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_7385a.dir/build.make CMakeFiles/cmTC_7385a.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_d26cb/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d26cb.dir/build.make CMakeFiles/cmTC_d26cb.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_7385a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7385a.dir/link.txt --verbose=1
-/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o  -o cmTC_7385a 
+Building C object CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_d26cb
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d26cb.dir/link.txt --verbose=1
+/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o  -o cmTC_d26cb 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -61,9 +61,9 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7385a' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4Nbvz1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7385a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7385a' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_d26cb' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEK1Nsh.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_d26cb /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_d26cb' '-mtune=generic' '-march=x86-64'
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -71,14 +71,14 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_7385a/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_7385a.dir/build.make CMakeFiles/cmTC_7385a.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_d26cb/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_d26cb.dir/build.make CMakeFiles/cmTC_d26cb.dir/build]
   ignore line: [make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”]
-  ignore line: [Building C object CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_7385a]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7385a.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o  -o cmTC_7385a ]
+  ignore line: [Building C object CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.10/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_d26cb]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d26cb.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc     -v -rdynamic CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o  -o cmTC_d26cb ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -90,13 +90,13 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7385a' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc4Nbvz1.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_7385a /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_d26cb' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccEK1Nsh.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_d26cb /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cc4Nbvz1.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccEK1Nsh.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -115,7 +115,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_7385a] ==> ignore
+    arg [cmTC_d26cb] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -127,7 +127,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_7385a.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_d26cb.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--push-state] ==> ignore
     arg [--as-needed] ==> ignore
@@ -159,14 +159,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_5fe0c/fast"
-/usr/bin/make -f CMakeFiles/cmTC_5fe0c.dir/build.make CMakeFiles/cmTC_5fe0c.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_1e5d1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_1e5d1.dir/build.make CMakeFiles/cmTC_1e5d1.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_5fe0c.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_5fe0c.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_5fe0c
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fe0c.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_5fe0c.dir/feature_tests.c.o  -o cmTC_5fe0c 
+Building C object CMakeFiles/cmTC_1e5d1.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTC_1e5d1.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_1e5d1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1e5d1.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_1e5d1.dir/feature_tests.c.o  -o cmTC_1e5d1 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -179,14 +179,14 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_90f65/fast"
-/usr/bin/make -f CMakeFiles/cmTC_90f65.dir/build.make CMakeFiles/cmTC_90f65.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_ff77a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ff77a.dir/build.make CMakeFiles/cmTC_ff77a.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_90f65.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_90f65.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_90f65
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_90f65.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_90f65.dir/feature_tests.c.o  -o cmTC_90f65 
+Building C object CMakeFiles/cmTC_ff77a.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTC_ff77a.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_ff77a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ff77a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_ff77a.dir/feature_tests.c.o  -o cmTC_ff77a 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -199,14 +199,14 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_8cf1b/fast"
-/usr/bin/make -f CMakeFiles/cmTC_8cf1b.dir/build.make CMakeFiles/cmTC_8cf1b.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_adc1a/fast"
+/usr/bin/make -f CMakeFiles/cmTC_adc1a.dir/build.make CMakeFiles/cmTC_adc1a.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_8cf1b.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_8cf1b.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_8cf1b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8cf1b.dir/link.txt --verbose=1
-/usr/bin/cc      -rdynamic CMakeFiles/cmTC_8cf1b.dir/feature_tests.c.o  -o cmTC_8cf1b 
+Building C object CMakeFiles/cmTC_adc1a.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTC_adc1a.dir/feature_tests.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_adc1a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_adc1a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_adc1a.dir/feature_tests.c.o  -o cmTC_adc1a 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -217,28 +217,28 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_b1621/fast"
-/usr/bin/make -f CMakeFiles/cmTC_b1621.dir/build.make CMakeFiles/cmTC_b1621.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_10b33/fast"
+/usr/bin/make -f CMakeFiles/cmTC_10b33.dir/build.make CMakeFiles/cmTC_10b33.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_b1621.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTC_b1621.dir/testCXXCompiler.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_b1621
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b1621.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_b1621.dir/testCXXCompiler.cxx.o  -o cmTC_b1621 
+Building CXX object CMakeFiles/cmTC_10b33.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_10b33.dir/testCXXCompiler.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_10b33
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_10b33.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_10b33.dir/testCXXCompiler.cxx.o  -o cmTC_10b33 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_62817/fast"
-/usr/bin/make -f CMakeFiles/cmTC_62817.dir/build.make CMakeFiles/cmTC_62817.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_69861/fast"
+/usr/bin/make -f CMakeFiles/cmTC_69861.dir/build.make CMakeFiles/cmTC_69861.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_62817
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62817.dir/link.txt --verbose=1
-/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_62817 
+Building CXX object CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_69861
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69861.dir/link.txt --verbose=1
+/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_69861 
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper
@@ -250,9 +250,9 @@ Thread model: posix
 gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_62817' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cctFKsnh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_62817 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
-COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_62817' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_69861' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJZnoUF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_69861 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_69861' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -260,14 +260,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_62817/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_62817.dir/build.make CMakeFiles/cmTC_62817.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTC_69861/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTC_69861.dir/build.make CMakeFiles/cmTC_69861.dir/build]
   ignore line: [make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”]
-  ignore line: [Building CXX object CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_62817]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62817.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_62817 ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.10/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_69861]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69861.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++      -v -rdynamic CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_69861 ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper]
@@ -279,13 +279,13 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 7.5.0 (Ubuntu 7.5.0-3ubuntu1~18.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/7/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/7/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_62817' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cctFKsnh.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_62817 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_69861' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/7/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJZnoUF.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -pie -z now -z relro -o cmTC_69861 /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o -L/usr/lib/gcc/x86_64-linux-gnu/7 -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/7/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/7/../../.. CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/7/crtendS.o /usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/collect2] ==> ignore
     arg [-plugin] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/liblto_plugin.so] ==> ignore
     arg [-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/7/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/cctFKsnh.res] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccJZnoUF.res] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
     arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
     arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -304,7 +304,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_62817] ==> ignore
+    arg [cmTC_69861] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/Scrt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/7/crtbeginS.o] ==> ignore
@@ -316,7 +316,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/7/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/7/../../..]
-    arg [CMakeFiles/cmTC_62817.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_69861.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -344,14 +344,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1z] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_41674/fast"
-/usr/bin/make -f CMakeFiles/cmTC_41674.dir/build.make CMakeFiles/cmTC_41674.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_30862/fast"
+/usr/bin/make -f CMakeFiles/cmTC_30862.dir/build.make CMakeFiles/cmTC_30862.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_41674.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_41674.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_41674
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_41674.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_41674.dir/feature_tests.cxx.o  -o cmTC_41674 
+Building CXX object CMakeFiles/cmTC_30862.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1z -o CMakeFiles/cmTC_30862.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_30862
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30862.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_30862.dir/feature_tests.cxx.o  -o cmTC_30862 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -417,14 +417,14 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_62f1d/fast"
-/usr/bin/make -f CMakeFiles/cmTC_62f1d.dir/build.make CMakeFiles/cmTC_62f1d.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_17985/fast"
+/usr/bin/make -f CMakeFiles/cmTC_17985.dir/build.make CMakeFiles/cmTC_17985.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_62f1d.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_62f1d.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_62f1d
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_62f1d.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_62f1d.dir/feature_tests.cxx.o  -o cmTC_62f1d 
+Building CXX object CMakeFiles/cmTC_17985.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++14 -o CMakeFiles/cmTC_17985.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_17985
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_17985.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_17985.dir/feature_tests.cxx.o  -o cmTC_17985 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -490,14 +490,14 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_9c7a0/fast"
-/usr/bin/make -f CMakeFiles/cmTC_9c7a0.dir/build.make CMakeFiles/cmTC_9c7a0.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_742b0/fast"
+/usr/bin/make -f CMakeFiles/cmTC_742b0.dir/build.make CMakeFiles/cmTC_742b0.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_9c7a0.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_9c7a0.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_9c7a0
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9c7a0.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_9c7a0.dir/feature_tests.cxx.o  -o cmTC_9c7a0 
+Building CXX object CMakeFiles/cmTC_742b0.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTC_742b0.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_742b0
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_742b0.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_742b0.dir/feature_tests.cxx.o  -o cmTC_742b0 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -563,14 +563,14 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_2e101/fast"
-/usr/bin/make -f CMakeFiles/cmTC_2e101.dir/build.make CMakeFiles/cmTC_2e101.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_e1715/fast"
+/usr/bin/make -f CMakeFiles/cmTC_e1715.dir/build.make CMakeFiles/cmTC_e1715.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building CXX object CMakeFiles/cmTC_2e101.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_2e101.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_2e101
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2e101.dir/link.txt --verbose=1
-/usr/bin/c++       -rdynamic CMakeFiles/cmTC_2e101.dir/feature_tests.cxx.o  -o cmTC_2e101 
+Building CXX object CMakeFiles/cmTC_e1715.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTC_e1715.dir/feature_tests.cxx.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e1715
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1715.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_e1715.dir/feature_tests.cxx.o  -o cmTC_e1715 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
@@ -634,42 +634,42 @@ make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/
 Determining if the include file pthread.h exists passed with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_03c00/fast"
-/usr/bin/make -f CMakeFiles/cmTC_03c00.dir/build.make CMakeFiles/cmTC_03c00.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_58b87/fast"
+/usr/bin/make -f CMakeFiles/cmTC_58b87.dir/build.make CMakeFiles/cmTC_58b87.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_03c00.dir/CheckIncludeFile.c.o
-/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_03c00.dir/CheckIncludeFile.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
-Linking C executable cmTC_03c00
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03c00.dir/link.txt --verbose=1
-/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_03c00.dir/CheckIncludeFile.c.o  -o cmTC_03c00 
+Building C object CMakeFiles/cmTC_58b87.dir/CheckIncludeFile.c.o
+/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_58b87.dir/CheckIncludeFile.c.o   -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_58b87
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_58b87.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_58b87.dir/CheckIncludeFile.c.o  -o cmTC_58b87 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
 Determining if the function pthread_create exists in the pthread passed with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_d929f/fast"
-/usr/bin/make -f CMakeFiles/cmTC_d929f.dir/build.make CMakeFiles/cmTC_d929f.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_483c1/fast"
+/usr/bin/make -f CMakeFiles/cmTC_483c1.dir/build.make CMakeFiles/cmTC_483c1.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_d929f.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_d929f.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_d929f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d929f.dir/link.txt --verbose=1
-/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_d929f.dir/CheckFunctionExists.c.o  -o cmTC_d929f -lpthread 
+Building C object CMakeFiles/cmTC_483c1.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_483c1.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_483c1
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_483c1.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_483c1.dir/CheckFunctionExists.c.o  -o cmTC_483c1 -lpthread 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 
 Determining if the function sgemm_ exists passed with the following output:
 Change Dir: /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_bc530/fast"
-/usr/bin/make -f CMakeFiles/cmTC_bc530.dir/build.make CMakeFiles/cmTC_bc530.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_5c3d3/fast"
+/usr/bin/make -f CMakeFiles/cmTC_5c3d3.dir/build.make CMakeFiles/cmTC_5c3d3.dir/build
 make[1]: 进入目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
-Building C object CMakeFiles/cmTC_bc530.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgemm_   -o CMakeFiles/cmTC_bc530.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_bc530
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bc530.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgemm_    -rdynamic CMakeFiles/cmTC_bc530.dir/CheckFunctionExists.c.o  -o cmTC_bc530 /usr/lib/x86_64-linux-gnu/libopenblas.so 
+Building C object CMakeFiles/cmTC_5c3d3.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=sgemm_   -o CMakeFiles/cmTC_5c3d3.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_5c3d3
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5c3d3.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=sgemm_    -rdynamic CMakeFiles/cmTC_5c3d3.dir/CheckFunctionExists.c.o  -o cmTC_5c3d3 /usr/lib/x86_64-linux-gnu/libopenblas.so 
 make[1]: 离开目录“/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/CMakeFiles/CMakeTmp”
 
 

@@ -71,7 +71,7 @@ set(generated_file_path "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build
 set(generated_file_internal "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/src/CMakeFiles/sgm.dir//./sgm_generated_sgm.cu.o") # path
 set(generated_cubin_file_internal "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/src/CMakeFiles/sgm.dir//./sgm_generated_sgm.cu.o.cubin.txt") # path
 
-set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-10.0/bin/nvcc") # path
+set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda-11.1/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS  -std=c++11 -gencode;arch=compute_75,code=sm_75 ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELEASE  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64) # list
-set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda-10.0/include;$<TARGET_PROPERTY:sgm,INCLUDE_DIRECTORIES>") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda-11.1/include;$<TARGET_PROPERTY:sgm,INCLUDE_DIRECTORIES>") # list (needs to be in quotes to handle spaces properly).
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[$<TARGET_PROPERTY:sgm,COMPILE_DEFINITIONS>]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
 set(cuda_language_flag ) # list
@@ -187,7 +187,7 @@ cuda_execute_process(
 # For CUDA 2.3 and below, -G -M doesn't work, so remove the -G flag
 # for dependency generation and hope for the best.
 set(depends_CUDA_NVCC_FLAGS "${CUDA_NVCC_FLAGS}")
-set(CUDA_VERSION 10.0)
+set(CUDA_VERSION 11.1)
 if(CUDA_VERSION VERSION_LESS "3.0")
   # Note that this will remove all occurances of -G.
   list(REMOVE_ITEM depends_CUDA_NVCC_FLAGS "-G")
