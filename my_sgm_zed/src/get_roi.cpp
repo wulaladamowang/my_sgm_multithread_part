@@ -18,29 +18,43 @@ int relativeDis(cv::Vec4f line_para, std::vector<cv::Point2f> point) {
     }
     return index;
 };
+/**
+ * @description: 在图像中进行目标识别 
+ * @param 
+ * {
+ * image : 原始图像
+ * mask : 识别目标区域的掩码
+ * has_roi : 是否识别到目标区域
+ * rect_roi : 包围目标区域的最小正矩形, minx miny maxx maxy
+ * roi_points : 目标区域的四个角的坐标
+ * }
+ * @return {*}
+ */
+void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi, std::vector<cv::Point2f>& marker_position) {
 
-void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rect_roi, std::vector<cv::Point>& roi_points) {
-    static std::vector<int > pre_rect_roi = {0, 0, 1, 1};// 初始化用于记录上次检测到目标的位置
+    static std::vector<int > pre_rect_roi = {0, 0, 1, 1};// 初始化用于记录上次检测到目标的位置, 正矩形
     static cv::Size mask_size = image.size();
     static const cv::Ptr<cv::aruco::Dictionary> c_dictionary = cv::aruco::getPredefinedDictionary(
         cv::aruco::DICT_4X4_50);//DICT_6X6_1000
-    static const double pi = acos(-1.0);
+
     static std::vector<std::vector<cv::Point2f>> marker_corners;
     static std::vector<int> marker_ids;
+    
     bool is_full = false;
     int min_x, min_y, max_x, max_y;
-
+// 将上次目标位置扩大范围后作为目标检测的初始位置，若未检测到目标区域，则再进行全局搜索
     int pre_roi_min_x, pre_roi_min_y, pre_roi_max_x, pre_roi_max_y;   
     pre_roi_min_x = (pre_rect_roi[0] - 150) < 0 ? 0 : (pre_rect_roi[0] - 150);
     pre_roi_max_x = (pre_rect_roi[2] + 150) > image.cols-1 ? image.cols-1 : (pre_rect_roi[2] + 150);
     pre_roi_min_y = (pre_rect_roi[1] - 150) < 0 ? 0 : (pre_rect_roi[1] - 150);
     pre_roi_max_y = (pre_rect_roi[3] + 150) > image.rows-1 ? image.rows-1 : (pre_rect_roi[3] + 150);
-    
+   // 检测部分区域是否有marker， 可以增加检测速度 
     cv::Mat img_roi = image(cv::Rect(cv::Point(pre_roi_min_x, pre_roi_min_y), cv::Point(pre_roi_max_x, pre_roi_max_y)));
+    marker_corners.clear(); marker_ids.clear();
     cv::aruco::detectMarkers(img_roi, c_dictionary, marker_corners, marker_ids);
     ///获得检测的面积最大的aruco marker序号,每个ID都有一个（若检测到）
     int marker_number = marker_ids.size();
-    if (2 > marker_number)
+    if (1 > marker_number)
     {
         std::cout << "full detect ------" << std::endl;
         cv::aruco::detectMarkers(image, c_dictionary, marker_corners, marker_ids);
@@ -51,6 +65,7 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
     {
         int buff_id[6] = {-1, -1, -1, -1, -1, -1};//若存在相应的aruco marker id, 则记录其序号
         double buff_id_length[6] = {0.0, 0, 0, 0, 0, 0};//若存在相应的aruco marker， 则记录其在当前时刻周长的最大值
+    // 保存每个id的周长最大值的序号
         for(int i=0;i<marker_number;i++){
             double cur_marker_len = cv::arcLength(marker_corners[i], true);
             if(1 == marker_ids[i]){
@@ -98,12 +113,25 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         }else{
             cv::Vec4f line_para;
             cv::fitLine(compute_line, line_para, cv::DIST_L2, 0, 1e-2, 1e-2);
-            index = relativeDis(line_para, compute_line);
+            index = relativeDis(line_para, compute_line);// 返回距离线最近的id
         }
-        center_x = compute_line[index].x;
-        center_y = compute_line[index].y;
+        // index 记录了选取的id 的序号， 每个id对应物体的相对位置可知，根据序号进行比例扩大
+        int i = no_id[index];
+        // marker_position 记录了距离拟合直线最近的marker的坐标
+        marker_position.clear();
+        marker_position.reserve(4);
+        cv::Point2f point0, point1, point2, point3;
+        point0.x = marker_corners[buff_id[i]][0].x + (is_full ? 0 : pre_roi_min_x );
+        point0.y = marker_corners[buff_id[i]][0].y + (is_full ? 0 : pre_roi_min_y );
+        point1.x = marker_corners[buff_id[i]][1].x + (is_full ? 0 : pre_roi_min_x );
+        point1.y = marker_corners[buff_id[i]][1].y + (is_full ? 0 : pre_roi_min_y );
+        point2.x = marker_corners[buff_id[i]][2].x + (is_full ? 0 : pre_roi_min_x );
+        point2.y = marker_corners[buff_id[i]][2].y + (is_full ? 0 : pre_roi_min_y );
+        point3.x = marker_corners[buff_id[i]][3].x + (is_full ? 0 : pre_roi_min_x );
+        point3.y = marker_corners[buff_id[i]][3].y + (is_full ? 0 : pre_roi_min_y );
+        marker_position = {point0, point1, point2, point3};
 
-        std::vector<cv::Point > roi_position;//用于记录roi四个角点的位置
+        std::vector<cv::Point > roi_position;//用于记录roi四个角点的位置, 后续做掩码图
         roi_position.reserve(4);
         cv::Point roi_p0, roi_p1, roi_p2, roi_p3;//用来包裹整个目标圆柱
         ///轴向比例扩大，该参数通过过分支choose coefficient 获得，与目标检测物与贴码位置有关
@@ -118,7 +146,6 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
             case 1 : axial_coefficient = 17 ; axial_position_coefficient = 0.84 ; radial_coefficient = 3.1 ;break;
         }
 
-        int i = no_id[index];
         ///纵向比例扩大
 
         roi_p0.x = axial_position_coefficient*axial_coefficient*(marker_corners[buff_id[i]][1].x - marker_corners[buff_id[i]][0].x)+marker_corners[buff_id[i]][0].x;
@@ -145,7 +172,7 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
 
         roi_p3.x = radial_coefficient*(marker_corners[buff_id[i]][3].x - marker_corners[buff_id[i]][0].x)+roi_p3.x;
         roi_p3.y = radial_coefficient*(marker_corners[buff_id[i]][3].y - marker_corners[buff_id[i]][0].y)+roi_p3.y;
-
+        // 若选取目标区域不为原图， 其在原图的位置需要进行修正, 坐标有可能在图像之外
         roi_p0.x = roi_p0.x + (is_full ? 0 : pre_roi_min_x );
         roi_p0.y = roi_p0.y + (is_full ? 0 : pre_roi_min_y );
         roi_p1.x = roi_p1.x + (is_full ? 0 : pre_roi_min_x );
@@ -155,24 +182,11 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         roi_p3.x = roi_p3.x + (is_full ? 0 : pre_roi_min_x ); 
         roi_p3.y = roi_p3.y + (is_full ? 0 : pre_roi_min_y );
 
-        center_x = (roi_p0.x+roi_p1.x+roi_p2.x+roi_p3.x)/4;
-        center_y = (roi_p0.y+roi_p1.y+roi_p2.y+roi_p3.y)/4;
-
-
-
         mask.setTo(0);
         roi_position.push_back(roi_p0);
         roi_position.push_back(roi_p1);
         roi_position.push_back(roi_p2);
         roi_position.push_back(roi_p3);
-        cv::Point tmp_point;
-        roi_points.clear();
-        for (int m = 0; m < 4; m++){
-            tmp_point.x = roi_position[m].x < 0 ? 0 : (roi_position[m].x > mask_size.width-1 ? mask_size.width-1 : roi_position[m].x);
-            tmp_point.y = roi_position[m].y < 0 ? 0 : (roi_position[m].y > mask_size.height-1 ? mask_size.height-1 : roi_position[m].y);
-            roi_points.push_back(tmp_point);
-        }
-
 
         min_x = roi_p0.x>0?roi_p0.x:0;
         min_y = roi_p0.y>0?roi_p0.y:0;
@@ -199,8 +213,6 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         std::vector<std::vector<cv::Point>> contours;
         contours.push_back(roi_position);
         cv::fillPoly(mask, contours, 1);
-        //cv::rectangle(mask, cv::Rect(cv::Point(min_x, min_y), cv::Point(max_x, max_y)), cv::Scalar(150), 3);
-        //cv::rectangle(mask, cv::Rect(cv::Point(pre_roi_min_x, pre_roi_min_y), cv::Point(pre_roi_max_x, pre_roi_max_y)), cv::Scalar(150), 3);
         has_roi = true;
     }else{
         mask.setTo(0);
