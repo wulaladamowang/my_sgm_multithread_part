@@ -130,6 +130,7 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         point3.x = marker_corners[buff_id[i]][3].x + (is_full ? 0 : pre_roi_min_x );
         point3.y = marker_corners[buff_id[i]][3].y + (is_full ? 0 : pre_roi_min_y );
         marker_position = {point0, point1, point2, point3};
+        
 
         std::vector<cv::Point > roi_position;//用于记录roi四个角点的位置, 后续做掩码图
         roi_position.reserve(4);

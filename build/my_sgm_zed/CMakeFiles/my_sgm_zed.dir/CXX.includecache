@@ -58,6 +58,10 @@ opencv2/highgui.hpp
 iostream
 -
 
+../my_sgm_zed/include/img_process.hpp
+opencv2/opencv.hpp
+-
+
 ../my_sgm_zed/include/little_tips.hpp
 stdio.h
 -
@@ -84,11 +88,17 @@ get_point_cloud.hpp
 get_roi.hpp
 /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_roi.hpp
 
+/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.cpp
+img_process.hpp
+/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.hpp
+
 /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/little_tips.cpp
 little_tips.hpp
 /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/little_tips.hpp
 
 /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp
+img_process.hpp
+/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.hpp
 my_camera.hpp
 /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/my_camera.hpp
 get_point_cloud.hpp

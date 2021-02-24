@@ -217,6 +217,21 @@ src/get_roi.s:
 .PHONY : src/get_roi.s
 
 # target to build an object file
+src/img_process.o:
+	cd /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build && $(MAKE) -f my_sgm_zed/CMakeFiles/my_sgm_zed.dir/build.make my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/img_process.o
+.PHONY : src/img_process.o
+
+# target to preprocess a source file
+src/img_process.i:
+	cd /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build && $(MAKE) -f my_sgm_zed/CMakeFiles/my_sgm_zed.dir/build.make my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/img_process.i
+.PHONY : src/img_process.i
+
+# target to generate assembly for a file
+src/img_process.s:
+	cd /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build && $(MAKE) -f my_sgm_zed/CMakeFiles/my_sgm_zed.dir/build.make my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/img_process.s
+.PHONY : src/img_process.s
+
+# target to build an object file
 src/little_tips.o:
 	cd /home/wang/code/c++Code/my_sgm_zed_multithread_v2/build && $(MAKE) -f my_sgm_zed/CMakeFiles/my_sgm_zed.dir/build.make my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/little_tips.o
 .PHONY : src/little_tips.o
@@ -283,6 +298,9 @@ help:
 	@echo "... src/get_roi.o"
 	@echo "... src/get_roi.i"
 	@echo "... src/get_roi.s"
+	@echo "... src/img_process.o"
+	@echo "... src/img_process.i"
+	@echo "... src/img_process.s"
 	@echo "... src/little_tips.o"
 	@echo "... src/little_tips.i"
 	@echo "... src/little_tips.s"

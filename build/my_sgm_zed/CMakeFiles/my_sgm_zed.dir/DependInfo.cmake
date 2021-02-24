@@ -7,6 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_disparity.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/get_disparity.o"
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_point_cloud.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/get_point_cloud.o"
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_roi.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/get_roi.o"
+  "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/img_process.o"
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/little_tips.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/little_tips.o"
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/main.o"
   "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/my_camera.cpp" "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed/CMakeFiles/my_sgm_zed.dir/src/my_camera.o"

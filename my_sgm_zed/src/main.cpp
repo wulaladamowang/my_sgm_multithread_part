@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 17:31:48
- * @LastEditTime: 2021-02-23 23:22:30
+ * @LastEditTime: 2021-02-24 21:49:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp
@@ -22,15 +22,15 @@
 cv::Point previousPoint;
 bool isdispaly = false;
 
-void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, std::vector<cv::Point>& marker_position, 
+void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, std::vector<cv::Point2f>& marker_position, 
                 std::vector<cv::Point3f>& position_points, const float scale, bool& has_roi){   //23 01对应长边， 03 12对应于短边，贴码导致
     if(!has_roi)
         return;
     //（x1, y1) (x2, y2) (middlex, middley) 是检测到的aruco marker上的沿着轴线方向的三个坐标 , 原图坐标
-    float x1 = (marker_position[0].x + marker_position[3].x)/2;
-    float y1 = (marker_position[0].y + marker_position[3].y)/2;
-    float x2 = (marker_position[1].x + marker_position[2].x)/2;
-    float y2 = (marker_position[1].y + marker_position[2].y)/2;
+    int x1 = (marker_position[0].x + marker_position[3].x)/2;
+    int y1 = (marker_position[0].y + marker_position[3].y)/2;
+    int x2 = (marker_position[1].x + marker_position[2].x)/2;
+    int y2 = (marker_position[1].y + marker_position[2].y)/2;
     
     cv::Size size_scale = cv::Size(mask.cols*scale, mask.rows*scale);
     cv::Mat mask_scale;
@@ -39,8 +39,8 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     y1 = y1 * scale;
     x2 = y2 * scale;
     y2 = y2 * scale;
-    float middlex = (x1 + x2) / 2;
-    float middley = (y1 + y2) / 2;
+    int middlex = (x1 + x2) / 2;
+    int middley = (y1 + y2) / 2;
 
     position_points.clear();
     
@@ -51,12 +51,12 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     float standrad_depth = 0;
     for (int m = -8; m < 9; m++){
         for (int n = -8; n < 9; n++){
-            float depth = 62.196873360591700*1.398428736568180e+03/((disparity.ptr<float>(middley+m)[middlex+n]/scale));
+            float depth = 62.196873360591700*1.398428736568180e+03 * scale /(disparity.ptr<float>(middley+m)[middlex+n]);
             if (0<depth && depth<10000)
             {
                 sum += depth;
-                x_sum += 62.196873360591700*(middlex+n) / ((disparity.ptr<float>(middley+m)[middlex+n]/scale);
-                y_sum += 62.196873360591700*(middley+m) / ((disparity.ptr<float>(middley+m)[middlex+n]/scale);
+                x_sum += 62.196873360591700*(middlex+n) / ((disparity.ptr<float>(middley+m)[middlex+n]/scale));
+                y_sum += 62.196873360591700*(middley+m) / ((disparity.ptr<float>(middley+m)[middlex+n]/scale));
                 num++;
             }   
         }
@@ -72,13 +72,14 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     y_sum = 0;
 
     // 一个方向向量
-    double x_vector = x1 - x2;
-    double y_vector = y1 - y2;
+    int x_vector = x1 - x2;
+    int y_vector = y1 - y2;
+
     // 在中点的两侧各寻找两个点， 通过向量进行做方向判断
     for (float i=5.5;i>=0.5;){
         i = i - 0.5;
-        float x = middlex + i * x_vector;
-        float y = middlex + i * y_vector;
+        int x = middlex + i * x_vector;
+        int y = middlex + i * y_vector;
         if (mask_scale.at<uchar>(y, x) == 0)
             continue;
         for (int m = -15; m < 16; m++){
@@ -104,8 +105,8 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     y_sum = 0;
     for (float i=5.5;i>=0.5;){
         i = i - 0.5;
-        float x = middlex - i * x_vector;
-        float y = middlex - i * y_vector;
+        int x = middlex - i * x_vector;
+        int y = middlex - i * y_vector;
         if (mask_scale.at<uchar>(y, x) == 0)
             continue;
         for (int m = -15; m < 16; m++){
@@ -164,10 +165,8 @@ std::condition_variable con_roi;
 
 void showImg(cv::Mat& img_left_scale, cv::Mat& disparity_mask, cv::Mat& disparity_8u, bool& run){
     while (run){
-        cv::setMouseCallback(WINDOW, On_mouse, 0);
         cv::imshow(WINDOW, img_left_scale);
         cv::imshow("mask scale", disparity_mask);
-        cv::imshow("disparity_8u", disparity_8u);
         const char key = cv::waitKey(10);
         if (key == 27)
             break;
@@ -188,14 +187,14 @@ void showImg(cv::Mat& img_left_scale, cv::Mat& disparity_mask, cv::Mat& disparit
  *         }
  * @return {*}
  */
-void GetMaskRoi(const cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::Mat& mask_scale, bool& has_roi, 
-                std::vector<int>& rect_roi, std::vector<cv::Point>& marker_position, const bool& run){
-    cv::Mat img_detect(img_left.size(), img_left.type());
+void GetMaskRoi(cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::Mat& mask_scale, bool& has_roi, 
+                std::vector<int>& rect_roi, std::vector<cv::Point2f>& marker_position, const bool& run){
+    cv::Mat img_detect(img_left.size(), CV_8UC3);
     while (run){
         std::unique_lock<std::mutex> lck_r(lock_roi);
         con_roi.wait(lck_r, []{return not_roi;});
-        img_detect = img_left.clone();
-        get_roi(std::ref(img_left), std::ref(mask), std::ref(has_roi), std::ref(rect_roi), std::ref(marker_position));
+        cv::cvtColor(img_left, img_detect, cv::COLOR_BGRA2BGR);
+        get_roi(std::ref(img_detect), std::ref(mask), std::ref(has_roi), std::ref(rect_roi), std::ref(marker_position));
         cv::resize(mask, mask_scale, siz_scale, cv::INTER_LINEAR);
         not_roi = false;
         con_roi.notify_one();
@@ -234,14 +233,14 @@ int main(int argc, char** argv){
     const int width = static_cast<int>(zed.getCameraInformation().camera_resolution.width);
 	const int height = static_cast<int>(zed.getCameraInformation().camera_resolution.height);
 
-    sl::Mat zed_image_l(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C3);
-	sl::Mat zed_image_r(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C3);//相机原格式获得图像
+    sl::Mat zed_image_l(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);
+	sl::Mat zed_image_r(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
     
     cv::Mat img_left = slMat2cvMat(zed_image_l);
     cv::Mat img_right = slMat2cvMat(zed_image_r);//sl::Mat 到opencv 格式图像的转换
     
     cv::Mat img_left_remap(img_left.size(), img_left.type());// 存储校正畸变后的图像
-    cv::Mat img_right_remap(img_lef_zedt.size(), img_leftzed_.type());
+    cv::Mat img_right_remap(img_left.size(), img_left.type());
 
     cv::Size siz_scale = cv::Size(width*scale, height*scale);// 对于原图进行缩放尺寸，缩放后的尺寸大小
     // img_left_scale type（） 的影响 ,CV_16S 或者 CV_8U
@@ -305,7 +304,7 @@ int main(int argc, char** argv){
     std::vector<cv::Point3f> position_points;// 提取的三维坐标
     position_points.reserve(3);
     rect_roi.reserve(4);
-    roi_points.reserve(4);
+    marker_position.reserve(4);
 
     bool run = true;
     
@@ -318,8 +317,8 @@ int main(int argc, char** argv){
     while(run){
         if (zed.grab(runtime_parameters) == sl::ERROR_CODE::SUCCESS) {
         // 获取并校正图像，对校正之后的图像进行缩放
-            zed.retrieveImage(zed_image_l, sl::VIEW::LEFT_UNRECTIFIED_GRAY, sl::MEM::CPU);
-            zed.retrieveImage(zed_image_r, sl::VIEW::RIGHT_UNRECTIFIED_GRAY, sl::MEM::CPU);
+            zed.retrieveImage(zed_image_l, sl::VIEW::LEFT_UNRECTIFIED, sl::MEM::CPU);
+            zed.retrieveImage(zed_image_r, sl::VIEW::RIGHT_UNRECTIFIED, sl::MEM::CPU);
             //zed.retrieveMeasure(point_cloud, sl::MEASURE::XYZRGBA, sl::MEM::CPU);
             if (img_left_scale.empty() || img_right_scale.empty())
                 continue;
@@ -331,16 +330,10 @@ int main(int argc, char** argv){
             cv::remap(img_right, img_right_remap, map21, map22, cv::INTER_LINEAR);
         // 图像增强加灰度图转换
             img_enhance(img_left_remap, img_right_remap, img_left_scale, img_right_scale, siz_scale);
-            
         // 图像匹配获得视差图
             get_disparity(std::ref(sgm), std::ref(img_left_scale), std::ref(img_right_scale), std::ref(disparity), disp_size, subpixel);
             disparity.convertTo(disparity_32f, CV_32F, subpixel ? 1. / sgm::StereoSGM::SUBPIXEL_SCALE : 1);
-            
-            
-            // sl::float4 point3d;
-            // point_cloud.getValue(previousPoint.x/scale, previousPoint.y/scale , &point3d);
-            // std::cout << "Point X: " << previousPoint.x << " Y: " << previousPoint.y << "  Disparity: " << 62.196873360591700*1.398428736568180e+03/(disparity_32f.ptr<float>(previousPoint.y)[previousPoint.x]/scale) << " depth: " << point3d.z << std::endl;
-            // cv::waitKey(0);
+            // sl::float4 point3d; // point_cloud.getValue(previousPoint.x/scale, previousPoint.y/scale , &point3d); // std::cout << "Point X: " << previousPoint.x << " Y: " << previousPoint.y << "  Disparity: " << 62.196873360591700*1.398428736568180e+03/(disparity_32f.ptr<float>(previousPoint.y)[previousPoint.x]/scale) << " depth: " << point3d.z << std::endl; // cv::waitKey(0); 
             not_roi = true;
             con_roi.notify_one();
 
