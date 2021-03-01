@@ -188,23 +188,15 @@ void get_roi(cv::Mat& image, cv::Mat& mask, bool& has_roi, std::vector<int>& rec
         roi_position.push_back(roi_p1);
         roi_position.push_back(roi_p2);
         roi_position.push_back(roi_p3);
-
-        min_x = roi_p0.x>0?roi_p0.x:0;
-        min_y = roi_p0.y>0?roi_p0.y:0;
-        max_x = roi_p0.x>mask_size.width-1?mask_size.width-1:roi_p0.x;
-        max_y = roi_p0.y>mask_size.height-1?mask_size.height-1:roi_p0.y;
-
-        for(int m = 1;m<4;m++){
-            if(roi_position[m].x<min_x)
-                min_x = roi_position[m].x>0?roi_position[m].x:0;
-            if(roi_position[m].y<min_y)
-                min_y = roi_position[m].y>0?roi_position[m].y:0;
-            if(roi_position[m].x>max_x)
-                max_x = roi_position[m].x>mask_size.width-1?mask_size.width-1:roi_position[m].x;
-            if(roi_position[m].y>max_y)
-                max_y = roi_position[m].y>mask_size.height-1?mask_size.height-1:roi_position[m].y;
-        };
-
+        min_x = std::min({roi_p0.x, roi_p1.x, roi_p2.x, roi_p3.x});
+        min_y = std::min({roi_p0.y, roi_p1.y, roi_p2.y, roi_p3.y});
+        max_x = std::max({roi_p0.x, roi_p1.x, roi_p2.x, roi_p3.x});
+        max_y = std::max({roi_p0.y, roi_p1.y, roi_p2.y, roi_p3.y});
+        min_x = min_x < 0 ? 0 : min_x;
+        max_x = max_x > mask_size.width-1 ? mask_size.width - 1 : max_x;
+        min_y = min_y < 0 ? 0 : min_y;
+        max_y = max_y > mask_size.height-1 ? mask_size.height - 1 : max_y;
+    
         rect_roi[0] = min_x;
         rect_roi[1] = min_y;
         rect_roi[2] = max_x;

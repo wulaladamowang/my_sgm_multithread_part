@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-02-08 17:31:48
- * @LastEditTime: 2021-02-24 21:49:40
+ * @LastEditTime: 2021-02-26 09:31:56
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp
@@ -37,11 +37,11 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     cv::resize(mask, mask_scale, size_scale);
     x1 = x1 * scale;
     y1 = y1 * scale;
-    x2 = y2 * scale;
+    x2 = x2 * scale;
     y2 = y2 * scale;
     int middlex = (x1 + x2) / 2;
     int middley = (y1 + y2) / 2;
-
+    
     position_points.clear();
     
     float sum = 0;
@@ -76,10 +76,10 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     int y_vector = y1 - y2;
 
     // 在中点的两侧各寻找两个点， 通过向量进行做方向判断
-    for (float i=5.5;i>=0.5;){
+    for (float i=5.5;i>=0;){
         i = i - 0.5;
         int x = middlex + i * x_vector;
-        int y = middlex + i * y_vector;
+        int y = middley + i * y_vector;
         if (mask_scale.at<uchar>(y, x) == 0)
             continue;
         for (int m = -15; m < 16; m++){
@@ -94,7 +94,14 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
                     }   
             }
         }
-        break;
+        if (sum/num < 10000 && sum/num > 0)
+            break;
+        else{
+            x_sum = 0;
+            y_sum = 0;
+            sum = 0;
+            num = 0;
+        }
     }
     position_points[1].z = sum/num;
     position_points[1].x = x_sum / num;
@@ -103,10 +110,10 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     num = 0;
     x_sum = 0;
     y_sum = 0;
-    for (float i=5.5;i>=0.5;){
+    for (float i=5.5;i>=0;){
         i = i - 0.5;
         int x = middlex - i * x_vector;
-        int y = middlex - i * y_vector;
+        int y = middley - i * y_vector;
         if (mask_scale.at<uchar>(y, x) == 0)
             continue;
         for (int m = -15; m < 16; m++){
@@ -121,7 +128,14 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
                     }   
             }
         }
-        break;
+        if (sum/num < 10000 && sum/num > 0)
+            break;
+        else{
+            x_sum = 0;
+            y_sum = 0;
+            sum = 0;
+            num = 0;
+        }
     }
     position_points[0].z = sum/num;
     position_points[0].x = x_sum / num;
@@ -154,9 +168,12 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     float vect_x_standrad = vect_x / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
     float vect_y_standrad = vect_y / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
     float vect_z_standrad = vect_z / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
-
-    std::cout << "X: " << position_points[2].x << " Y: " << position_points[2].y << " Z: " << position_points[2].z << "\n"
+    if (vect_x_standrad > -2.0 && vect_x_standrad < 1.0){
+        std::cout << "X: " << position_points[2].x << " Y: " << position_points[2].y << " Z: " << position_points[2].z << "\n"
               << "Vect_x: " << vect_x_standrad << " Vect_y: " << vect_y_standrad << " Vect_z: " << vect_z_standrad << std::endl;
+    }else{
+        std::cout << "Error" << std::endl;
+    }
 }
 
 std::mutex lock_roi;
@@ -165,7 +182,9 @@ std::condition_variable con_roi;
 
 void showImg(cv::Mat& img_left_scale, cv::Mat& disparity_mask, cv::Mat& disparity_8u, bool& run){
     while (run){
+
         cv::imshow(WINDOW, img_left_scale);
+        cv::imshow("mask_8u", disparity_8u);
         cv::imshow("mask scale", disparity_mask);
         const char key = cv::waitKey(10);
         if (key == 27)
@@ -191,6 +210,7 @@ void GetMaskRoi(cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::
                 std::vector<int>& rect_roi, std::vector<cv::Point2f>& marker_position, const bool& run){
     cv::Mat img_detect(img_left.size(), CV_8UC3);
     while (run){
+        
         std::unique_lock<std::mutex> lck_r(lock_roi);
         con_roi.wait(lck_r, []{return not_roi;});
         cv::cvtColor(img_left, img_detect, cv::COLOR_BGRA2BGR);
@@ -200,8 +220,6 @@ void GetMaskRoi(cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::
         con_roi.notify_one();
     }    
 }
-
-
 
 int main(int argc, char** argv){
 
@@ -309,8 +327,8 @@ int main(int argc, char** argv){
     bool run = true;
     
 	
-    std::thread DispImg(showImg, std::ref(img_left_scale), std::ref(disparity_mask), std::ref(disparity_8u), std::ref(run));
-    std::thread GetRoi(GetMaskRoi, std::ref(img_left_remap), std::ref(siz_scale), std::ref(mask), std::ref(mask_scale), std::ref(has_roi), std::ref(rect_roi), std::ref(marker_position), std::ref(run));
+   std::thread DispImg(showImg, std::ref(img_left_scale), std::ref(disparity_mask), std::ref(disparity_8u), std::ref(run));
+   std::thread GetRoi(GetMaskRoi, std::ref(img_left_remap), std::ref(siz_scale), std::ref(mask), std::ref(mask_scale), std::ref(has_roi), std::ref(rect_roi), std::ref(marker_position), std::ref(run));
     // cv::namedWindow(WINDOW);
     //cv::setMouseCallback(WINDOW, On_mouse, 0);
     
