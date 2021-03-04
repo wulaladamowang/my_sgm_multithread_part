@@ -182,7 +182,6 @@ std::condition_variable con_roi;
 
 void showImg(cv::Mat& img_left_scale, cv::Mat& disparity_mask, cv::Mat& disparity_8u, bool& run){
     while (run){
-
         cv::imshow(WINDOW, img_left_scale);
         cv::imshow("mask_8u", disparity_8u);
         cv::imshow("mask scale", disparity_mask);

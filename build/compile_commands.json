@@ -1,0 +1,37 @@
+[
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/get_disparity.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_disparity.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_disparity.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/get_point_cloud.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_point_cloud.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_point_cloud.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/get_roi.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_roi.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/get_roi.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/img_process.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/img_process.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/little_tips.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/little_tips.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/little_tips.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/main.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp"
+},
+{
+  "directory": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/build/my_sgm_zed",
+  "command": "/usr/bin/c++   -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/include -I/usr/local/cuda-11.1/include -I/usr/local/zed/include -isystem /usr/local/include/opencv4 -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/include -I/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/../../include    -std=c++11 -g -O3 -pthread -std=c++11 -o CMakeFiles/my_sgm_zed.dir/src/my_camera.o -c /home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/my_camera.cpp",
+  "file": "/home/wang/code/c++Code/my_sgm_zed_multithread_v2/my_sgm_zed/src/my_camera.cpp"
+}
+]

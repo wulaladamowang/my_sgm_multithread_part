@@ -1,6 +1,7 @@
 SET(execName my_sgm_zed)
 CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
 PROJECT(${execName})
+set( CMAKE_EXPORT_COMPILE_COMMANDS ON )
 
 option(LINK_SHARED_ZED "Link with the ZED SDK shared executable" ON)
 
