@@ -1,11 +1,3 @@
-/*
- * @Author: your name
- * @Date: 2021-02-08 17:31:48
- * @LastEditTime: 2021-02-26 09:31:56
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: /my_sgm_zed_multithread_v2/my_sgm_zed/src/main.cpp
- */
 #include "img_process.hpp"
 #include "my_camera.hpp"
 #include "get_point_cloud.hpp"
@@ -14,6 +6,10 @@
 #include "little_tips.hpp"
 #include <condition_variable>
 #include <mutex>
+#include <opencv2/core/mat.hpp>
+#include <opencv2/core/matx.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
 #include <thread>
 #include <string>
 #include <iostream>
@@ -106,6 +102,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     position_points[1].z = sum/num;
     position_points[1].x = x_sum / num;
     position_points[1].y = y_sum / num;
+    
     sum = 0;
     num = 0;
     x_sum = 0;
@@ -222,6 +219,7 @@ void GetMaskRoi(cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::
 
 int main(int argc, char** argv){
 
+    printf("hello");
 // zed相机的初始化
 	sl::Camera zed;
 	sl::InitParameters initParameters;
@@ -247,11 +245,13 @@ int main(int argc, char** argv){
     runtime_parameters.sensing_mode = sl::SENSING_MODE::LAST;
 
 //图像变量的获取及初始化
-    const int width = static_cast<int>(zed.getCameraInformation().camera_resolution.width);
-	const int height = static_cast<int>(zed.getCameraInformation().camera_resolution.height);
+    const int width = static_cast<int>(zed.getCameraInformation().camera_configuration.resolution.width);
+	const int height = static_cast<int>(zed.getCameraInformation().camera_configuration.resolution.height);
 
-    sl::Mat zed_image_l(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);
-	sl::Mat zed_image_r(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
+   // sl::Mat zed_image_l(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);
+	//sl::Mat zed_image_r(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
+    sl::Mat zed_image_l(zed.getCameraInformation().camera_configuration.resolution, sl::MAT_TYPE::U8_C4);
+	sl::Mat zed_image_r(zed.getCameraInformation().camera_configuration.resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
     
     cv::Mat img_left = slMat2cvMat(zed_image_l);
     cv::Mat img_right = slMat2cvMat(zed_image_r);//sl::Mat 到opencv 格式图像的转换
@@ -263,10 +263,8 @@ int main(int argc, char** argv){
     // img_left_scale type（） 的影响 ,CV_16S 或者 CV_8U
     cv::Mat img_left_scale(siz_scale, CV_8U);
     cv::Mat img_right_scale(siz_scale, CV_8U);// 缩放之后的图像, 在校正之后的图像基础上进行缩放
-
     cv::Mat disparity(siz_scale, CV_16S);//存储sgm算法获得的视差图
     cv::Mat disparity_8u(siz_scale, CV_8U), disparity_32f(siz_scale, CV_32F), disparity_mask(siz_scale, CV_8U);// 8u转化便于显示的灰度图, 32f实际视差图,带小数点, disparity_mask保留mask区域的视差
-
 // 相机内外参数的读取, 注意相机内外参数要与使用的相机型号或拍摄视频的相机型号相一致
     std::string in = "/home/wang/code/c++Code/my_sgm_zed_server/canshu/intrinsics.yml";
     cv::FileStorage fs(in, cv::FileStorage::READ);
@@ -304,11 +302,11 @@ int main(int argc, char** argv){
     sgm::StereoSGM sgm(width*scale, height*scale, disp_size, input_depth, output_depth, sgm::EXECUTE_INOUT_CUDA2CUDA, params);
 
 // 记录时间
-    long long ts0 =getCurrentTime();
-    long long ts1 =getCurrentTime();
-    long long ts2 = getCurrentTime();
-    long long ts3 =getCurrentTime();
-    long long ts4 = getCurrentTime();
+    //long long ts0 =getCurrentTime();
+    //long long ts1 =getCurrentTime();
+    //long long ts2 = getCurrentTime();
+    //long long ts3 =getCurrentTime();
+    //long long ts4 = getCurrentTime();
     long long ts5 =getCurrentTime();
     long long ts6 = getCurrentTime();
 

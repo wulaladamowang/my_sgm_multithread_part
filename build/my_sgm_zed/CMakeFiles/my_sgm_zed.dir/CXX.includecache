@@ -113,6 +113,14 @@ condition_variable
 -
 mutex
 -
+opencv2/core/mat.hpp
+-
+opencv2/core/matx.hpp
+-
+opencv2/highgui.hpp
+-
+opencv2/imgproc.hpp
+-
 thread
 -
 string
