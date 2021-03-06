@@ -17,7 +17,15 @@
 #define WINDOW "原图"
 cv::Point previousPoint;
 bool isdispaly = false;
-
+/*
+ *mask: 原图大小，aruco-marker产生的目标位置，需要结合scale进行缩放与视差图使用
+ *disparity: 视差图，scale已经缩放
+ *rect_roi: 记录包围目标区域的最小矩形, 原图尺寸(未使用)
+ *marker_position:  aruco_marker的四个角点位置（原图尺寸）
+ *position_points:  记录用于确定位姿的点的向量
+ *scale: 用于缩小原图进行视差匹配的比例因子
+ *has_roi: 是否检测到目标区域
+ */
 void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, std::vector<cv::Point2f>& marker_position, 
                 std::vector<cv::Point3f>& position_points, const float scale, bool& has_roi){   //23 01对应长边， 03 12对应于短边，贴码导致
     if(!has_roi)
@@ -27,14 +35,16 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     int y1 = (marker_position[0].y + marker_position[3].y)/2;
     int x2 = (marker_position[1].x + marker_position[2].x)/2;
     int y2 = (marker_position[1].y + marker_position[2].y)/2;
-    
+    //缩放后的尺寸    
     cv::Size size_scale = cv::Size(mask.cols*scale, mask.rows*scale);
     cv::Mat mask_scale;
     cv::resize(mask, mask_scale, size_scale);
+    // marker的两个中点，两者的连线沿着轴线方向
     x1 = x1 * scale;
     y1 = y1 * scale;
     x2 = x2 * scale;
     y2 = y2 * scale;
+    // marker的中心的坐标
     int middlex = (x1 + x2) / 2;
     int middley = (y1 + y2) / 2;
     
@@ -47,6 +57,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     float standrad_depth = 0;
     for (int m = -8; m < 9; m++){
         for (int n = -8; n < 9; n++){
+            // 像素焦距X基线距离,单位mm，最终结果的单位看基线的单位
             float depth = 62.196873360591700*1.398428736568180e+03 * scale /(disparity.ptr<float>(middley+m)[middlex+n]);
             if (0<depth && depth<10000)
             {
@@ -62,12 +73,12 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     position_points[2].z = sum/num;
     position_points[2].x = x_sum / num;
     position_points[2].y = y_sum / num;
+
     sum = 0;
     num = 0;
     x_sum = 0;
     y_sum = 0;
-
-    // 一个方向向量
+    // 将点转化为坐标向量
     int x_vector = x1 - x2;
     int y_vector = y1 - y2;
 
@@ -81,6 +92,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
         for (int m = -15; m < 16; m++){
             for (int n = -15; n < 16; n++){
                 float depth = 62.196873360591700*1.398428736568180e+03/((disparity.ptr<float>(y+m)[x+n]/scale));
+                // 通过距离和是否在目标识别区域进行筛选
                 if (standrad_depth-1000<depth && depth<standrad_depth+1000 && mask_scale.at<uchar>(y, x)!=0)
                     {
                         sum += depth;
@@ -90,6 +102,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
                     }   
             }
         }
+        // 如果得到的结果在合理的范围就可以退出循环，否则，将识别区域向中心点靠近，重新循环
         if (sum/num < 10000 && sum/num > 0)
             break;
         else{
@@ -138,6 +151,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     position_points[0].x = x_sum / num;
     position_points[0].y = y_sum / num;
 
+    // 得到三个点的坐标之后进行向量进行归一化操作, 后续为了提高精度可以提取更多的向量，从而使用跟多的点进行拟合
     float vect_1_x = position_points[0].x - position_points[1].x;
     float vect_1_y = position_points[0].y - position_points[1].y;
     float vect_1_z = position_points[0].z - position_points[1].z;
@@ -165,6 +179,7 @@ void getPosition(cv::Mat& mask, cv::Mat& disparity, std::vector<int>& rect_roi, 
     float vect_x_standrad = vect_x / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
     float vect_y_standrad = vect_y / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
     float vect_z_standrad = vect_z / sqrt(vect_x*vect_x + vect_y*vect_y + vect_z*vect_z);
+    // aruco marker的中点的三维坐标作为位置坐标， 将向量的均值作为姿态的数据
     if (vect_x_standrad > -2.0 && vect_x_standrad < 1.0){
         std::cout << "X: " << position_points[2].x << " Y: " << position_points[2].y << " Z: " << position_points[2].z << "\n"
               << "Vect_x: " << vect_x_standrad << " Vect_y: " << vect_y_standrad << " Vect_z: " << vect_z_standrad << std::endl;
@@ -177,6 +192,14 @@ std::mutex lock_roi;
 bool not_roi = true;// 未处理过roi?
 std::condition_variable con_roi;
 
+/**
+ * @brief 
+ *
+ * @param img_left_scale: 缩放后的左图
+ * @param disparity_mask:    视差图与mask_scale相乘之后的图
+ * @param disparity_8u:  disparity-img cv_8u
+ * @param run:   flag 
+ */
 void showImg(cv::Mat& img_left_scale, cv::Mat& disparity_mask, cv::Mat& disparity_8u, bool& run){
     while (run){
         cv::imshow(WINDOW, img_left_scale);
@@ -219,16 +242,19 @@ void GetMaskRoi(cv::Mat& img_left,const cv::Size& siz_scale, cv::Mat& mask, cv::
 
 int main(int argc, char** argv){
 
-    printf("hello");
 // zed相机的初始化
 	sl::Camera zed;
 	sl::InitParameters initParameters;
 	initParameters.camera_resolution = sl::RESOLUTION::HD1080;
-// 判断文件输入或者相机输入
+// 判断文件输入或者相机输入, 判断是文件输入或者多相机时候的相机序列号
     if (argc >= 2) {
         std::string str(argv[1]);
         if (str.find(".svo") != str.npos)
             initParameters.input.setFromSVOFile(argv[1]);
+        else if (atoi(argv[1])>10) 
+            initParameters.input.setFromSerialNumber(atoi(argv[1])); 
+        else
+            initParameters.input.setFromCameraID(atoi(argv[1]));
     }
 //立体匹配参数设定
     const float scale = argc >= 3 ? atof(argv[2]) : 0.5;//计算视差图时图像缩放比例,默认为变为原来的0.5倍，图像大小对sgm算法影响较大
@@ -248,8 +274,6 @@ int main(int argc, char** argv){
     const int width = static_cast<int>(zed.getCameraInformation().camera_configuration.resolution.width);
 	const int height = static_cast<int>(zed.getCameraInformation().camera_configuration.resolution.height);
 
-   // sl::Mat zed_image_l(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);
-	//sl::Mat zed_image_r(zed.getCameraInformation().camera_resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
     sl::Mat zed_image_l(zed.getCameraInformation().camera_configuration.resolution, sl::MAT_TYPE::U8_C4);
 	sl::Mat zed_image_r(zed.getCameraInformation().camera_configuration.resolution, sl::MAT_TYPE::U8_C4);//相机原格式获得图像
     
@@ -260,12 +284,11 @@ int main(int argc, char** argv){
     cv::Mat img_right_remap(img_left.size(), img_left.type());
 
     cv::Size siz_scale = cv::Size(width*scale, height*scale);// 对于原图进行缩放尺寸，缩放后的尺寸大小
-    // img_left_scale type（） 的影响 ,CV_16S 或者 CV_8U
-    cv::Mat img_left_scale(siz_scale, CV_8U);
+    cv::Mat img_left_scale(siz_scale, CV_8U);// img_left_scale type（） 的影响 ,CV_16S 或者 CV_8U
     cv::Mat img_right_scale(siz_scale, CV_8U);// 缩放之后的图像, 在校正之后的图像基础上进行缩放
     cv::Mat disparity(siz_scale, CV_16S);//存储sgm算法获得的视差图
     cv::Mat disparity_8u(siz_scale, CV_8U), disparity_32f(siz_scale, CV_32F), disparity_mask(siz_scale, CV_8U);// 8u转化便于显示的灰度图, 32f实际视差图,带小数点, disparity_mask保留mask区域的视差
-// 相机内外参数的读取, 注意相机内外参数要与使用的相机型号或拍摄视频的相机型号相一致
+// 相机内外参数的读取, 注意相机内外参数要与使用的相机型号或拍摄视频的相机型号相一致, 对于不同的相机，后续改进可以通过序列号区别
     std::string in = "/home/wang/code/c++Code/my_sgm_zed_server/canshu/intrinsics.yml";
     cv::FileStorage fs(in, cv::FileStorage::READ);
     if(!fs.isOpened())
@@ -320,21 +343,19 @@ int main(int argc, char** argv){
     position_points.reserve(3);
     rect_roi.reserve(4);
     marker_position.reserve(4);
-
+// 运行确定
     bool run = true;
     
-	
+// 多线程运行区域
    std::thread DispImg(showImg, std::ref(img_left_scale), std::ref(disparity_mask), std::ref(disparity_8u), std::ref(run));
    std::thread GetRoi(GetMaskRoi, std::ref(img_left_remap), std::ref(siz_scale), std::ref(mask), std::ref(mask_scale), std::ref(has_roi), std::ref(rect_roi), std::ref(marker_position), std::ref(run));
-    // cv::namedWindow(WINDOW);
-    //cv::setMouseCallback(WINDOW, On_mouse, 0);
     
     while(run){
         if (zed.grab(runtime_parameters) == sl::ERROR_CODE::SUCCESS) {
         // 获取并校正图像，对校正之后的图像进行缩放
             zed.retrieveImage(zed_image_l, sl::VIEW::LEFT_UNRECTIFIED, sl::MEM::CPU);
             zed.retrieveImage(zed_image_r, sl::VIEW::RIGHT_UNRECTIFIED, sl::MEM::CPU);
-            //zed.retrieveMeasure(point_cloud, sl::MEASURE::XYZRGBA, sl::MEM::CPU);
+        //zed.retrieveMeasure(point_cloud, sl::MEASURE::XYZRGBA, sl::MEM::CPU);
             if (img_left_scale.empty() || img_right_scale.empty())
                 continue;
             std::unique_lock<std::mutex> lck_r(lock_roi);// 些许不妥，速度快
@@ -343,7 +364,7 @@ int main(int argc, char** argv){
             getPosition(std::ref(mask), std::ref(disparity_32f), std::ref(rect_roi), std::ref(marker_position), std::ref(position_points), std::ref(scale), std::ref(has_roi));
             cv::remap(img_left, img_left_remap, map11, map12, cv::INTER_LINEAR);
             cv::remap(img_right, img_right_remap, map21, map22, cv::INTER_LINEAR);
-        // 图像增强加灰度图转换
+        // 图像增强加灰度图转换, 后续再次增加图像的预处理
             img_enhance(img_left_remap, img_right_remap, img_left_scale, img_right_scale, siz_scale);
         // 图像匹配获得视差图
             get_disparity(std::ref(sgm), std::ref(img_left_scale), std::ref(img_right_scale), std::ref(disparity), disp_size, subpixel);
